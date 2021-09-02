@@ -2,6 +2,7 @@
 
 <?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -10,9 +11,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
       <TextArea fx:id="text_area" prefWidth="400.0" styleClass="sidebar" BorderPane.alignment="CENTER" />
    </center>
@@ -53,88 +54,31 @@
                <children>
                   <VBox layoutX="9.0" layoutY="-7.0" prefHeight="426.0" prefWidth="30.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <FontAwesomeIconView icon="ICON_FOLDER_OPEN" styleClass="sidebar_opt">
+                        <FontAwesomeIconView fx:id="open_button" icon="ICON_FOLDER_OPEN" onMouseClicked="#onOpenMouse" styleClass="sidebar_opt">
                            <VBox.margin>
                               <Insets left="6.0" top="15.0" />
                            </VBox.margin>
                         </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_FILE" layoutX="10.0" layoutY="10.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_SAVE" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_COPY" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_PASTE" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_CUT" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_UNDO" layoutX="10.0" layoutY="26.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_PAPER_CLIP" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_REMOVE_SIGN" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_FONT" layoutX="16.0" layoutY="97.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_BOLD" layoutX="16.0" layoutY="349.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_ITALIC" layoutX="10.0" layoutY="370.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_PICTURE" layoutX="16.0" layoutY="349.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_COMMENTS" layoutX="16.0" layoutY="349.0" styleClass="sidebar_opt">
-                           <VBox.margin>
-                              <Insets left="6.0" top="15.0" />
-                           </VBox.margin>
-                        </FontAwesomeIconView>
-                        <FontAwesomeIconView icon="ICON_COMMENTS" layoutX="16.0" layoutY="349.0" styleClass="sidebar_opt">
+                        <FontAwesomeIconView fx:id="save_button" icon="ICON_SAVE" layoutX="16.0" layoutY="97.0" onMouseClicked="#onSaveMouse" styleClass="sidebar_opt">
                            <VBox.margin>
                               <Insets left="6.0" top="15.0" />
                            </VBox.margin>
                         </FontAwesomeIconView>
                      </children></VBox>
+                  <Button fx:id="markdown_button" layoutX="-3.0" layoutY="535.0" mnemonicParsing="false" onAction="#onMouseClickedMarkdown" styleClass="button_MD" text=".MD" AnchorPane.bottomAnchor="14.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
       </HBox>
    </left>
    <right>
-      <TextFlow fx:id="text_flow" prefWidth="400.0" BorderPane.alignment="CENTER" />
+      <HBox fx:id="fieldMd" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
