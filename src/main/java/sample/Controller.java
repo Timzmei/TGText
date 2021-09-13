@@ -34,10 +34,7 @@ public class Controller {
     private TextFile currentTextFile;
 
     private final EditorModel model;
-
-    // Create a WebView
     private WebView browser;
-    // Get WebEngine via WebView
     private WebEngine webEngine;
 
     public Controller(EditorModel model) {
@@ -199,12 +196,8 @@ public class Controller {
         Parser parser = Parser.builder(options).build();
         HtmlRenderer renderer = HtmlRenderer.builder(options).build();
 
-        // You can re-use parser and renderer instances
         Node document = parser.parse(text_area.getText());
-        String html = renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
-
-
-        // Load content.
+        String html = renderer.render(document);
         webEngine.loadContent(html);
     }
 
@@ -254,8 +247,6 @@ public class Controller {
             }
         }
 
-//        String text = text_area.getText();
-//        text_flow.setText(text);
     }
 
 
