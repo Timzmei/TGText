@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
-      <TextArea fx:id="text_area" prefWidth="400.0" styleClass="sidebar" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="text_area" onKeyPressed="#saveChange" prefWidth="400.0" styleClass="sidebar" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">

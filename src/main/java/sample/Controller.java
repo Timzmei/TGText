@@ -35,9 +35,16 @@ public class Controller {
 
     private final EditorModel model;
 
+    // Create a WebView
+    private WebView browser;
+    // Get WebEngine via WebView
+    private WebEngine webEngine;
+
     public Controller(EditorModel model) {
         this.model = model;
         this.currentTextFile = null;
+        this.browser = new WebView();
+        this.webEngine = this.browser.getEngine();
     }
 
     @FXML
@@ -170,38 +177,35 @@ public class Controller {
     }
 
     @FXML
+    public void saveChange(Event event) {
+        setMDtext(this.webEngine);
+    }
+
+    @FXML
     public void onMouseClickedMarkdown(Event event) {
 
         if(border_pane.getRight() !=null) {
             border_pane.setRight(null);
         } else {
-            TextArea textArea = new TextArea();
-
-            // Create a WebView
-            WebView browser = new WebView();
-            // Get WebEngine via WebView
-            WebEngine webEngine = browser.getEngine();
-
-
-
-
             border_pane.setRight(browser);
-
-            MutableDataSet options = new MutableDataSet();
-            Parser parser = Parser.builder(options).build();
-            HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-
-            // You can re-use parser and renderer instances
-            Node document = parser.parse(text_area.getText());
-            String html = renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
-
-
-            // Load content.
-            webEngine.loadContent(html);
-
-            textArea.setText(html);
+            setMDtext(this.webEngine);
         }
 
+    }
+
+    private void setMDtext(WebEngine webEngine) {
+
+        MutableDataSet options = new MutableDataSet();
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+
+        // You can re-use parser and renderer instances
+        Node document = parser.parse(text_area.getText());
+        String html = renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
+
+
+        // Load content.
+        webEngine.loadContent(html);
     }
 
 
