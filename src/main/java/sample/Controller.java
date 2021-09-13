@@ -6,11 +6,6 @@ package sample;
  * project name TGText
  */
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Arrays;
-
 import com.cathive.fonts.fontawesome.FontAwesomeIconView;
 import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.html.HtmlRenderer;
@@ -19,15 +14,18 @@ import com.vladsch.flexmark.util.options.MutableDataSet;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Arrays;
 
 public class Controller {
 
@@ -178,7 +176,16 @@ public class Controller {
             border_pane.setRight(null);
         } else {
             TextArea textArea = new TextArea();
-            border_pane.setRight(textArea);
+
+            // Create a WebView
+            WebView browser = new WebView();
+            // Get WebEngine via WebView
+            WebEngine webEngine = browser.getEngine();
+
+
+
+
+            border_pane.setRight(browser);
 
             MutableDataSet options = new MutableDataSet();
             Parser parser = Parser.builder(options).build();
@@ -187,6 +194,10 @@ public class Controller {
             // You can re-use parser and renderer instances
             Node document = parser.parse(text_area.getText());
             String html = renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
+
+
+            // Load content.
+            webEngine.loadContent(html);
 
             textArea.setText(html);
         }
