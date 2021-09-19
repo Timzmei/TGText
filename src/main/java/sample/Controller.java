@@ -11,6 +11,7 @@ import com.vladsch.flexmark.ast.Node;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.options.MutableDataSet;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -181,11 +182,13 @@ public class Controller {
     @FXML
     public void onMouseClickedMarkdown(Event event) {
 
-        if(border_pane.getRight() !=null) {
+        if(border_pane.getRight() != null) {
             border_pane.setRight(null);
         } else {
-            border_pane.setRight(browser);
             setMDtext(this.webEngine);
+            browser.setPrefWidth(border_pane.getWidth() / 2);
+            border_pane.setRight(browser);
+
         }
 
     }
@@ -199,12 +202,14 @@ public class Controller {
         Node document = parser.parse(text_area.getText());
         String html = renderer.render(document);
         webEngine.loadContent(html);
+
+
     }
 
 
     @FXML
     void initialize() {
-
+        border_pane.setRight(null);
 
 
     }

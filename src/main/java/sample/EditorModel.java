@@ -1,18 +1,24 @@
 package sample;
 
+
+/**
+ * Created by timurg
+ * on 31.08.2021
+ * project name TGText
+ */
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+
+
 public class EditorModel {
 
-    /**
-     * Created by timurg
-     * on 31.08.2021
-     * project name TGText
-     */
+
 
     public void save(TextFile textFile) {
         try {

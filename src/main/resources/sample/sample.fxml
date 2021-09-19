@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="parent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
-      <TextArea fx:id="text_area" onKeyPressed="#saveChange" prefWidth="400.0" styleClass="sidebar" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="text_area" onKeyPressed="#saveChange" styleClass="sidebar" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -78,7 +78,4 @@
          </children>
       </HBox>
    </left>
-   <right>
-      <HBox fx:id="fieldMd" BorderPane.alignment="CENTER" />
-   </right>
 </BorderPane>

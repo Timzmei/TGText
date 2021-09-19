@@ -22,6 +22,10 @@ public class App extends Application {
         loader.setControllerFactory(t -> new Controller(new EditorModel()));
 
         stage.setScene(new Scene(loader.load()));
+
+        stage.setMinWidth(1024);
+        stage.setMinHeight(600);
+
         stage.show();
     }
 
